@@ -1,0 +1,25 @@
+# Stage 2 (patch encoder + LLM), Llama-3.2-3B. Values of the runs reported in Table 1.
+script: train_stage2.py
+model_name_or_path: <Stage-1 checkpoint of the same seed>
+tokenizer_name_or_path: meta-llama/Llama-3.2-3B
+codebook_size: 500
+patch_mode: curriculum
+patch_size: 8
+mixed_static_prob: 0.5
+curriculum_align_frac: 0.333333
+curriculum_mixed_frac: 0.333333
+pooling: mean
+local_layers: 1
+local_heads: 8
+cross_heads: 8
+epochs: 2
+lr: 1e-5
+weight_decay: 0.0
+max_grad_norm: 0.3
+batch_size: 2
+grad_accum: 8
+precision: bf16
+dataloader_num_workers: 0
+seed: 42                  # 43 / 44 for the other two runs
+frozen: input embedding matrix
+evaluation: static patching with patch_size 8

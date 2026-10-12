@@ -1,0 +1,14 @@
+# Stage 1 (raw discrete adaptation), Llama-3.2-3B. Values of the runs reported in Table 1.
+script: train_stage1.py
+model_name: meta-llama/Llama-3.2-3B
+codebook_size: 500
+epochs: 2
+lr: 1e-5
+batch_size: 2
+grad_accum: 8
+warmup_ratio: 0.03        # script default
+weight_decay: 0.01        # fixed inside the script
+max_grad_norm: 1.0        # Trainer default
+precision: bf16
+seed: 42                  # 43 / 44 for the other two runs
+frozen: text rows of the input embedding matrix

@@ -1,0 +1,9 @@
+outputs/
+checkpoints/
+ckpt/
+out/
+*.pt
+*.safetensors
+*.wav
+*.flac
+__pycache__/
